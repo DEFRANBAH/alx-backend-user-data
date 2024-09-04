@@ -1,6 +1,7 @@
 import re
-def filter_datum(fields: list[str], redaction: str,
-                 message: str, separator: str) -> str:
+
+
+def filter_datum(fields, redaction, message, separator):
     """
     Replaces sensitive information in a message with a redacted value
     based on the list of fields to redact
@@ -14,7 +15,7 @@ def filter_datum(fields: list[str], redaction: str,
     Returns:
         The filtered string message with redacted values
     """
-   
+
 
     pattern = f"({'|'.join(fields)})=([^\\{separator}]*)"
     return re.sub(pattern, lambda m: f"{m.group(1)}={redaction}", message)
