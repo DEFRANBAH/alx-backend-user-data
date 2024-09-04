@@ -1,10 +1,20 @@
-#!/usr/bin/env python3
-"""Filtering data from logs"""
 import re
+def filter_datum(fields: list[str], redaction: str,
+                 message: str, separator: str) -> str:
+    """
+    Replaces sensitive information in a message with a redacted value
+    based on the list of fields to redact
 
-def filter_datum(fields, redaction, message, separator):
-    """Returns a log message with the fields redacted"""
-    
-    pattern = f"({'|'.join(fields)})=([^\\{separator}]*)"
-    return re.sub(pattern, lambda m: f"{m.group(1)}={redaction}", message)
+    Args:
+        fields: list of fields to redact
+        redaction: the value to use for redaction
+        message: the string message to filter
+        separator: the separator to use between fields
 
+    Returns:
+        The filtered string message with redacted values
+    """
+    for f in fields:
+        message = re.sub(f'{f}=.*?{separator}',
+                         f'{f}={redaction}{separator}', message)
+    return message
