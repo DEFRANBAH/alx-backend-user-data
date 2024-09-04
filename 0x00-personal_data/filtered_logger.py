@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import re
 
+from typing import List
 
 def filter_datum(fields, redaction, message, separator):
     """
@@ -23,12 +24,9 @@ def filter_datum(fields, redaction, message, separator):
 
 import logging
 
-
 class RedactingFormatter(logging.Formatter):
-    """ 
-    Custom Redacting Formatter class
+    """ Redacting Formatter class
     """
-
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
