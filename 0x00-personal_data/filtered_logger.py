@@ -14,7 +14,8 @@ def filter_datum(fields: list[str], redaction: str,
     Returns:
         The filtered string message with redacted values
     """
-    for f in fields:
-        message = re.sub(f'{f}=.*?{separator}',
-                         f'{f}={redaction}{separator}', message)
-    return message
+   
+
+    pattern = f"({'|'.join(fields)})=([^\\{separator}]*)"
+    return re.sub(pattern, lambda m: f"{m.group(1)}={redaction}", message)
+
