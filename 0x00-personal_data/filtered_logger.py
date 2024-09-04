@@ -41,3 +41,6 @@ class RedactingFormatter(logging.Formatter):
         # Use filter_datum to filter out sensitive fields in the log message
         record.msg = filter_datum(self.fields, self.REDACTION, record.msg, self.SEPARATOR)
         return super().format(record)
+
+if __name__ == '__main__':
+    main()
