@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Route module for the API.
+"""Route module for the in the API.
 """
 import os
 from os import getenv
