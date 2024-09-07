@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Basic authentication module for the API.
+"""Basic authentication module for the API for the API.
 """
 import re
 import base64
