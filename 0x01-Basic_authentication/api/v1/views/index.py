@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module of Index views.
+"""Module of Index views in the API of the AirBnB clone v3
 """
 from flask import jsonify, abort
 from api.v1.views import app_views
